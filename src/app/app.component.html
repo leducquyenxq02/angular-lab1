@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2 border">
+            <div class="row">
+                {{customHospital|json}}
+                <div class="col-6 offset-3">
+                    <div class="form-group">
+                        <label for="">Tên BV</label>
+                        <input type="text"
+                        [value]="customHospital.name"
+                        (keyup)="customHospital.name=$event.target.value"
+                        class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tên Giám Đốc</label>
+                        <input type="text"
+                        [value]="customHospital.tengd"
+                        (keyup)="customHospital.tengd=$event.target.value"
+                        class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Địa Chỉ</label>
+                        <input type="text"
+                        [value]="customHospital.diachi"
+                        (keyup)="customHospital.diachi=$event.target.value"
+                        class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Số Ca Nhiễm</label>
+                        <input type="text" 
+                        [value]="customHospital.socanhiem"
+                        (keyup)="customHospital.socanhiem=$event.target.value"
+                        class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Số Ca Chữa Khỏi</label>
+                        <input type="text"
+                        [value]="customHospital.socachuakhoi"
+                        (keyup)="customHospital.socachuakhoi=$event.target.value"
+                        class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Số Ca Tử Vong</label>
+                        <input type="text"
+                        [value]="customHospital.socatuvong"
+                        (keyup)="customHospital.socatuvong=$event.target.value"
+                        class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-3">
+                            <img [src]="customHospital.img" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ảnh BV</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="text-center">
+                        <button (click)="saveHospital()" class="btn btn-sm btn-success">Lưu</button>
+                        &nbsp;
+                        <button (click)="cancel()" class="btn btn-sm btn-danger">Hủy</button>
+                    </div>
+                </div>
+            </div>
+            <h2>{{title}}</h2>
+            <table class="table">
+                <thead class="thead-light">
+                    <th>Ảnh</th>
+                    <th>Tên BV</th>
+                    <th>Tên GĐ</th>
+                    <th>Địa Chỉ</th>
+                    <th>SCN</th>
+                    <th>SCCK</th>
+                    <th>SCTV</th>
+                    <th>Action</th>
+                </thead>
+                <tr *ngFor="let hospital of hospitalList">
+                    <th><img [src]="hospital.img" width="100"></th>
+                    <th>{{hospital.name}}</th>
+                    <th>{{hospital.tengd}}</th>
+                    <th>{{hospital.diachi}}</th>
+                    <th>{{hospital.socanhiem}}</th>
+                    <th>{{hospital.socachuakhoi}}</th>
+                    <th>{{hospital.socatuvong}}</th>
+                    <th> <button (click)="editHospital(hospital)" class="btn btn-sm btn-info">Sửa</button>
+                        <button (click)="removeHospital(hospital)" class="btn btn-sm btn-danger">Xóa</button></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
